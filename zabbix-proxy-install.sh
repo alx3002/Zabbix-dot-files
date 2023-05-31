@@ -30,6 +30,8 @@ sudo mysql -uroot -p'rootDBpass' -e "grant all privileges on zabbix_proxy.* to z
 sudo cat /usr/share/zabbix-sql-scripts/mysql/proxy.sql | mysql --default-character-set=utf8mb4 -uzabbix -p'zabbixDBpass' zabbix_proxy
 
 # Configuring Zabbix proxy
+cd /etc/zabbix
+
 sudo nano /etc/zabbix/zabbix_proxy.conf
 
 # Enabling Zabbix Proxy
