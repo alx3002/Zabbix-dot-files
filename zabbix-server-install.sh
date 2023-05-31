@@ -7,7 +7,7 @@ sudo apt upgrade
 wget https://repo.zabbix.com/zabbix/6.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest+ubuntu22.04_all.deb
 sudo dpkg -i zabbix-release_latest+ubuntu22.04_all.deb
 sudo apt update
-sudo apt -y install zabbix-proxy-mysql zabbix-sql-scripts
+sudo apt -y install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent
 
 # Installing Database
 sudo apt install software-properties-common -y
@@ -28,17 +28,21 @@ cd /etc/zabbix
 sudo wget -N https://raw.githubusercontent.com/Gianlucas94/Zabbix-dot-files/main/zabbix_server.conf
 
 # Configuring Firewall
-ufw allow 10050/tcp
-ufw allow 10051/tcp
-ufw allow 80/tcp
-ufw reload
+sudo ufw allow 10050/tcp
+sudo ufw allow 10051/tcp
+sudo ufw allow 80/tcp
+sudo ufw enable
+sudo ufw reload
 
 # Starting and Enabling Zabbix Server
 sudo systemctl restart zabbix-server zabbix-agent 
 sudo systemctl enable zabbix-server zabbix-agent
 
+# Installing PTBR Language
+sudo locale-gen pt_BR.UTF-8
+
 # Configuring frontEnd
-sudo nano /etc/zabbix/apache.conf
-php_value date.timezone Europe/Amsterdam
+#sudo nano /etc/zabbix/apache.conf
+#php_value date.timezone Europe/Amsterdam
 sudo systemctl restart apache2
 sudo systemctl enable apache2
