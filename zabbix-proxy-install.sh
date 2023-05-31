@@ -3,9 +3,9 @@
 sudo apt update
 sudo apt upgrade
 
-# Installing Zabbix Proxy 6.5
-wget https://repo.zabbix.com/zabbix/6.5/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.5-1+ubuntu22.04_all.deb
-sudo dpkg -i zabbix-release_6.5-1+ubuntu22.04_all.deb
+# Installing Zabbix Proxy 6.4
+wget https://repo.zabbix.com/zabbix/6.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest+ubuntu22.04_all.deb
+sudo dpkg -i zabbix-release_latest+ubuntu22.04_all.deb
 sudo apt update
 sudo apt -y install zabbix-proxy-mysql zabbix-sql-scripts
 
@@ -32,6 +32,9 @@ sudo cat /usr/share/zabbix-sql-scripts/mysql/proxy.sql | mysql --default-charact
 # Configuring Zabbix proxy
 cd /etc/zabbix
 sudo wget -N https://raw.githubusercontent.com/Gianlucas94/Zabbix-dot-files/main/zabbix_proxy.conf
+
+#allowing zabbix trough firewall
+sudo ufw allow 10051/tcp
 
 # Enabling Zabbix Proxy
 sudo systemctl restart zabbix-proxy
