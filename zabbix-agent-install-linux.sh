@@ -14,3 +14,8 @@ sudo wget -N https://raw.githubusercontent.com/Gianlucas94/Zabbix-dot-files/main
 #Enabling Zabbix agent 6.5
 sudo systemctl restart zabbix-agent 
 sudo systemctl enable zabbix-agent
+
+#allowing zabbix trough firewall
+firewall-cmd --permanent --zone=public --add-port=10050/tcp
+firewall-cmd --reload
+sudo ufw allow 10050/tcp
