@@ -31,7 +31,7 @@ sudo cat /usr/share/zabbix-sql-scripts/mysql/proxy.sql | mysql --default-charact
 
 # Configuring Zabbix proxy
 cd /etc/zabbix
-
+curl 
 sudo nano /etc/zabbix/zabbix_proxy.conf
 
 # Enabling Zabbix Proxy
