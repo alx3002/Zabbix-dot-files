@@ -31,6 +31,8 @@ sudo wget -N https://raw.githubusercontent.com/Gianlucas94/Zabbix-dot-files/main
 sudo ufw allow 10050/tcp
 sudo ufw allow 10051/tcp
 sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 22/tcp
 sudo ufw enable
 sudo ufw reload
 
